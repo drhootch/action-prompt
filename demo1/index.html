@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ActionPrompt Basic Demo with Chrome AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="demo-content">
+        <h1>ActionPrompt Basic Demo with Chrome AI</h1>
+        
+        <div class="setup-instructions">
+            <h2>Try these commands</h2>
+            <ul>
+                <li>"Open settings"</li>
+                <li>"Save my document"</li>
+                <li>"Show settings page"</li>
+                <li>"Save my work"</li>
+            </ul>
+        </div>
+        <p>You can use any language you want, the plugin will try to understand you.</p>
+
+        <div class="demo-buttons">
+            <button onclick="window.demoFunctions.openSettings()">Manual: Open Settings</button>
+            <button onclick="window.demoFunctions.saveDocument()">Manual: Save Document</button>
+        </div>
+    </div>
+
+    <!-- NLP Plugin -->
+    <div id="action-prompt-plugin" class="action-prompt-plugin">
+        <div class="action-prompt-plugin-container">
+            <input type="text" id="action-prompt-input" placeholder="Type a command in any language..." />
+            <button id="action-prompt-submit">
+                <svg width="20" height="20" viewBox="0 0 24 24">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            </button>
+        </div>
+        <div id="action-prompt-feedback" class="action-prompt-feedback"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="app.js"></script>
+
+    <script>
+        window.demoFunctions = {
+            openSettings: function() {
+                alert('Settings opened!');
+                console.log('Settings opened!');
+            },
+            saveDocument: function() {
+                alert('Document saved!');
+                console.log('Document saved!');
+            }
+        };
+    </script>
+</body>
+</html>
