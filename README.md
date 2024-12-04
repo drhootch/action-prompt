@@ -1,6 +1,86 @@
-# ActionPrompt Plugin Developer Guide
+# ActionPrompt Developer Guide
 
 A natural language processing plugin that uses Chrome AI (Gemini Nano) to interpret commands and execute corresponding actions. This plugin supports multilingual input and variable extraction.
+
+> **Note**: this library can be integrated into **any web based JavaScript project** - whether it's a vanilla JavaScript project or a Framework based project (React, Vue, Svelte, etc.). Simply import the library and map natural language commands to your desired actions!
+
+## How It Works
+
+### Core Components
+
+1. **AI Model Integration**
+   - Uses Chrome's built-in Gemini Nano AI model
+   - Initializes with a system prompt that configures the AI as a multilingual command interpreter
+
+2. **Command Registry**
+   - Stores commands in a Map structure where each entry contains:
+     - Command key (identifier)
+     - Example phrases
+     - Callback function
+     - Expected variables (optional)
+
+### Processing Flow
+
+1. **Input Processing**
+   ```javascript
+   // When user input is received:
+   const result = await actionPrompt.processInput("my name is John Smith and I'm 30");
+   ```
+
+2. **AI Analysis**
+   - Constructs a prompt containing:
+     - User's input
+     - Available commands and their example phrases
+     - Expected variables (if any)
+   - Sends to AI for interpretation
+   - Example internal prompt:
+   
+   ```
+
+   USER INPUT: "my name is John Smith and I'm 30"
+
+   AVAILABLE COMMANDS:
+   - Command "fill_form": Similar phrases: "my name is John Doe and I'm 25"...
+     Expected variables: firstName, lastName, age
+   - Command "toggle_theme": Similar phrases: "toggle theme"...
+     No variables expected
+
+   TASK:
+   1. Compare user input against commands
+   2. Find closest matching command
+   3. Extract variables if required
+   ```
+
+3. **Variable Extraction**
+   - If the matched command expects variables:
+     - First attempt: Extracts variables from initial AI response
+     - If variables are missing: Performs a second AI call specifically for variable extraction
+     - Returns structured JSON with command and variables:
+   ```javascript
+   {
+       action: "fill_form",
+       variables: {
+           firstName: "John",
+           lastName: "Smith",
+           age: "30"
+       }
+   }
+   ```
+
+4. **Action Execution**
+   - Retrieves the registered callback for the matched command
+   - Executes callback with extracted variables (if any)
+   ```javascript
+   actionPrompt.executeAction(result);
+   ```
+
+### Multilingual Support
+
+- AI model inherently understands multiple languages
+- System prompt configured to:
+  - Accept input in any language
+  - Normalize responses to English
+  - Maintain consistent command matching
 
 ## Prerequisites
 
