@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ActionPrompt Demos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            color: #333;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .description {
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .demos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .demo-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .demo-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .demo-card h3 {
+            margin-top: 0;
+            color: #2563eb;
+        }
+
+        .demo-card a {
+            display: inline-block;
+            text-decoration: none;
+            color: #fff;
+            background: #2563eb;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        .demo-card a:hover {
+            background: #1d4ed8;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid #eee;
+            color: #666;
+        }
+
+        .github-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .github-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ActionPrompt</h1>
+        <p class="description">
+            A powerful natural language processing library that uses Chrome AI (Gemini Nano) 
+            to interpret commands and execute corresponding actions. Supporting multilingual input 
+            and variable extraction.
+        </p>
+    </div>
+
+    <div class="demos">
+        <div class="demo-card">
+            <h3>Basic Command Demo</h3>
+            <p>Simple demonstration of command processing with basic examples and basic alert outputs.</p>
+            <a href="demo1/index.html">View Demo</a>
+        </div>
+
+        <div class="demo-card">
+            <h3>Form Fill Demo</h3>
+            <p>Showcases variable extraction capabilities with natural language form filling.</p>
+            <a href="demo2/index.html">View Demo</a>
+        </div>
+
+        <div class="demo-card">
+            <h3>Settings Page Demo</h3>
+            <p>Demonstrates a settings page with various inputs and fields, and theme switching.</p>
+            <a href="demo3/index.html">View Demo</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h2>About</h2>
+        <p>
+            Created by Ishak Amri<br>
+            Powered by Chrome AI (Gemini Nano)
+        </p>
+        <a href="https://github.com/drhootch/action-prompt" class="github-link">
+            View on GitHub →
+        </a>
+    </div>
+</body>
+</html>
